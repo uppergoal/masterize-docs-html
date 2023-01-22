@@ -1,11 +1,17 @@
 # Introduction
- 
-Welcome to Nextra! This is a basic docs template. You can use it as a starting point for your own project :)
 
-## What is Nextra?
+This is my cheatsheet for HTML.
 
-A **simple**, **powerful** and **flexible** site generation framework with everything you love from Next.js.
+[Get started with inline vs block elements](/type)
 
-## Documentation
+## Elements
 
-The documentation is available at [https://nextra.site](https://nextra.site).
+import { elements } from "../data/elements.ts";
+import { concepts } from "../data/concepts.ts";
+import ProductsList from "../components/ProductsList.tsx";
+
+<ProductsList list={elements} />
+
+## Concepts
+
+<ProductsList list={concepts} />

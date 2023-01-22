@@ -1,0 +1,330 @@
+# text
+
+**Use these elements for it's semantic meaning, not for styling. Use CSS to style them properly.**
+The reason is because the browser will render them differently and the user can change the browser default style. (More info during the CSS tutorials)
+
+Refer to the official doc for more info: [https://developer.mozilla.org/en-US/docs/Web/HTML/Element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element)
+
+import ColumnsList from "../../components/ColumnsList";
+import CodePreview from "../../components/CodePreview";
+import { inlineList, blockList } from "../../data/texts.ts";
+
+## Text Block Elements
+
+<ColumnsList groups={blockList} />
+
+### h1-h6
+
+Heading elements represent six levels of section headings. `h1` is the highest section level and `h6` is the lowest.
+
+- `h1` is the main title of the page. **It should be unique on the page**.
+- Each heading level represent a level in a **table of content**. the bigger the number, the lower the level.
+
+```html
+<h1>Main header of the page</h1>
+<section>
+  <h2>Title of the section</h2>
+  <article><h3>Title of this article</h3></article>
+  <article><h3>Title of this article</h3></article>
+</section>
+<section><h2>...</h2></section>
+```
+
+### p
+
+Represents a paragraph.
+
+- HTML paragraphs can be any structural grouping of related content, such as images or form fields.
+- Screen-readers and other assistive technology provide shortcuts to let their users skip to the next or previous paragraph.
+- **don't** use `<p>` just to create space between elements. Use CSS for that.
+
+```html
+<p>This is a paragraph</p>
+```
+
+### Address
+
+contact information for a person or people, or for an organization.
+
+- can take whatever form is appropriate for the context
+
+```html
+<address>
+  You can visit the website at:
+  <a href="http://www.somedomain.com/contact"> www.somedomain.com</a>.<br />
+  You can also contact us by email at:
+  <a href="mailto:webmaster@somedomain.com"> contact webmaster</a>.<br />
+  Or if you want, you can visit us:<br />
+  Whatever Address name<br />
+  123 Random Street<br />
+  Random City, RA 123234<br />
+  Whatever Country
+</address>
+```
+
+### blockquote
+
+The enclosed text is an extended quotation
+
+**Additional attributes**
+
+| Attribute | Description                                      |
+| --------- | ------------------------------------------------ |
+| Cite      | A URL that points to the source of the quotation |
+
+```html
+<blockquote cite="https://example.com">
+  <p>
+    lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.
+  </p>
+</blockquote>
+```
+
+## Text Inline Elements
+
+<ColumnsList groups={inlineList} />
+
+### Small
+
+Represents side-comments, small print (legal or disclaimer). It has semantic meaning. It is used to convey that the text it contains is less important or has a lower degree of relevance than the surrounding text.
+
+```html
+<p>This is the content of an article</p>
+<hr />
+<p>
+  <small> This is a small print. </small>
+</p>
+```
+
+### Code
+
+indicate that the text is a short fragment of computer code.
+
+```html
+<p>You are currently learning <code>HTML</code></p>
+```
+
+### b
+
+draw the reader's attention to the element's contents, which are not otherwise granted special importance.
+
+- implies that the element is more important than the surrounding text.
+- Do not confuse with `strong` and `em` elements
+
+```html
+<p>I like to do sport like <b>hockey</b> because it gets me in the zone.</p>
+```
+
+### abbr
+
+An abbreviation or acronym.
+
+- Include a title attribute only when the inline expansion or definition is not available.
+- Use when:
+  - When an abbreviation is used and you want to provide an expansion or definition outside the flow of the document's content
+  - An abbreviation which may be unfamiliar to the reader
+- The title attribute has a specific semantic meaning. It must contain a full human-readable description or expansion of the abbreviation.
+- You can use the [#dfn](#dfn) in tandem with the `attr`
+
+```html
+<!-- Example 1 -->
+<p>
+  You can use <abbr>CSS</abbr> (Cascading Style Sheets) to style your
+  <abbr>HTML</abbr> (HyperText Markup Language).
+</p>
+
+<!-- Example 2 -->
+<p>
+  We can also put the full description of the abbreviation in the like this:
+  <abbr title="Cascading Style Sheets">CSS</abbr>. This will display a popup on
+  hover.
+</p>
+
+<!-- Example 3 -->
+<p>
+  You can also use the <code>dfn</code> element to define an abbreviation:
+  <dfn id="css">Cascading Style Sheets</dfn>
+  <abbr title="Cascading Style Sheets" href="#css">CSS</abbr>
+</p>
+```
+
+### Cite
+
+Cite a creative work (book, paper, essay, song, film, game...)
+
+- Normally used in a p or a blockquote
+
+```html
+<blockquote>
+  "May the Force be with you."" <cite>Star Wars, 1977</cite>
+</blockquote>
+```
+
+### em
+
+Stressed emphasis compared to surrounding text
+
+```html
+<p>This is <em>not</em> a drill!</p>
+```
+
+### i
+
+Set off from the normal text for some reason, such as idiomatic text, technical terms, taxonomical designations, among others.
+
+_Use more appropriate elements if possible like (`em`, `strong`, `mark`, `cite`, `dfn`)_
+
+```html
+<p>
+  The term <i>bandwidth</i> describes the measure of how much information can
+  pass through a data connection in a given amount of time.
+</p>
+```
+
+### q
+
+A short inline quotation
+
+- intended for short quotations that don't require paragraph breaks; for long quotations use the `blockquote`
+
+**Additional attributes**
+
+| Attribute | Description                                      |
+| --------- | ------------------------------------------------ |
+| Cite      | A URL that points to the source of the quotation |
+
+```html
+<p>
+  I remember Refael Nadal saying that
+  <q cite="https://www.brainyquote.com/authors/rafael-nadal-quotes"
+    >it's not the time to look for excused</q
+  >
+</p>
+```
+
+### strong
+
+Its contents have strong importance, seriousness, or urgency.
+
+- could be a sentence that is of great importance to the whole page
+- The `strong` element is for content that is of greater importance, while the `b` element is used to draw attention to text without indicating that it's more important.
+
+```html
+<p>
+  There is one rule you cannot break:
+  <strong>never give up!</strong>
+</p>
+```
+
+### time
+
+Represents a specific period in time.
+
+It may represent:
+
+- A time on a 24-hour clock
+- A precise date
+- A valid time duration
+
+**Additional attributes**
+| Attribute | Description |
+| ----- | ------------------------------------------------ |
+| datetime | Date, time or duration (check doc for the format) |
+
+```html
+<p>This a time: <time>12:00</time></p>
+<p>
+  This is a date:
+  <time datetime="2023-01-01">January, 01, 2023</time>
+</p>
+<p>Duration: <time datetime="PT4H">I work 4 hours a day</time></p>
+```
+
+### bdo
+
+Overrides the current directionality of text
+
+**Additional attributes**
+| Attribute | Description |
+| ----- | ------------------------------------------------ |
+| dir | ltr or rtl |
+
+```html
+<p>
+  <dir dir="rtl">a difference direction: right-to-left</dir>
+</p>
+```
+
+### samp
+
+Enclose inline text which represents sample (or quoted) output from a computer program.
+
+```html
+<p>I was trying to boot my computer, but I got this hilarious message:</p>
+<p>
+  <samp>Keyboard not found <br />Press F1 to continue</samp>
+</p>
+```
+
+### dfn
+
+Indicate the term being defined within the context of a definition phrase or sentence.
+
+- You can use a `dfn` and a `abbr` together
+
+```html
+<p>
+  The <strong>HTML Definition element</strong> (<strong
+    ><dfn>&lt;dfn&gt;</dfn></strong
+  >) is used to indicate the term being defined within the context of a
+  definition phrase or sentence.
+</p>
+```
+
+### kbd
+
+Textual user input from a keyboard, voice input, or any other text entry device.
+
+```html
+<p>
+  You can copy the text by pressing
+  <kbd><kbd>Ctrl/CMD</kbd>+<kbd>C</kbd></kbd
+  >.
+</p>
+```
+
+### sub
+
+displayed as subscript for solely typographical reasons.
+
+Appropriate use cases:
+
+- Footnotes
+- mathematical variable numbers
+- Chemical formula
+
+```html
+<p>Human need to drink water: H<sub>2</sub>O</p>
+```
+
+### sup
+
+displayed as superscript for solely typographical reasons.
+
+Appropriate use cases:
+
+- Displaying exponents
+- Displaying superior lettering
+- Representing ordinal numbers like: 4<sup>th</sup>
+
+```html
+<p>I invite you for my party on January 4<sup>th</sup></p>
+```
+
+### var
+
+represents the name of a variable in a mathematical expression or a programming context.
+
+```html
+<p>A simple equation: <var>x</var> = <var>y</var> + 2</p>
+```

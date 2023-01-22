@@ -1,0 +1,250 @@
+import CodePreview from "../components/CodePreview.tsx";
+import TypeBlock from "../components/TypeBlock.tsx";
+import TypeInline from "../components/TypeInline.tsx";
+import ColumnsList from "../components/ColumnsList.tsx";
+import { blockList, inlineList } from "../data/types.ts";
+
+# Types
+
+## Block Elements
+
+Block elements are elements that take up the full width of their parent container. They are typically used to create structural layout.
+
+Block elements will automatically create a new line before and after the element, and any other elements that come before or after it will be displayed on a new line.
+
+<TypeBlock />
+<ColumnsList groups={blockList} />
+
+### Most common
+
+#### main
+
+The main topic of the page.
+
+- unique
+- Repeated content across website like logo, navigation... shouldn't be included
+
+#### header
+
+May contains introductory content, navigation, logo, search form, author name...
+
+- Should define the role="banner" when it is the site-wide header (not a descendant of `aside`, `article`, `main`, `nav`, `section`)
+- Can contain a h1 - h6 but it is not required.
+
+#### aside
+
+It only indirectly related to the document's main content.
+
+- Can be used inside a descendant such has `article`, `main`
+
+#### footer
+
+The footer for its nearest ancestor. It generally contains information about the author, copyright or links related to the section.
+
+- If the ancestor is the body, it applies to the entire page. `article`, `main`
+
+#### section
+
+A generic sectioning element. Used only if it cannot be defined by a more specific element (aside, article)
+
+- Should contain a heading `h1 - h6`
+- If used to create a block/wrapper, use a `div` instead.
+
+#### article
+
+Self-contained composition ex: a post, an article, a blog entry, a product, a comment...
+
+- Can have multiple article.
+- It should include a heading `h1 - h6` as a child
+- When be nested inside another `article`. Ex: comments marked as `article` of an `article`
+- The author info can be provided through the `address` element
+- The publication date can be described using `<time datetime="...">`
+
+#### div
+
+A generic container. It offers no context. It is used to easily style elements.
+
+- Used only if no other semantic element can be used.
+
+#### nav
+
+Provide navigation links (menus, tables, contents...).
+
+- Can have multiple nav (should be labeled properly)
+- It's not necessary for all links to be contained in a nav element.
+- Can wrap a p containing a lot of links.
+- Use `aria-label` or `aria-labelledby` to label the nav element.
+- Use `aria-current="page"` to indicate the current page.
+
+#### dl-dt-dd
+
+A description list. It represents a list of groups of terms. It is normally used in conjunction with: titles (`dt`) and descriptions (`dd`)
+
+- Can have multiple title and description (for 1 `dl`)
+- Can use `divs` inside a `dl`
+
+#### ol-ul-li
+
+Ordered & unordered list of items (steps, directions, ingredients...)
+
+- Can have nested list items
+
+**Additional Attributes**
+| Attribute | Description |
+| --- | --- |
+| reversed (Boolean) | Reverse the order |
+| start (integer) | The ordered list to start with. |
+| type <br />**1** (number), <br />**a** (lowercase letters), <br />**A**: (uppercase letters), <br />**i**: (lowercase roman numerals), <br />**I**: (uppercase roman numerals) | Sets the numbering type |
+
+[integer] start: The ordered list to start with.
+1: (default) numbers
+a: lowercase letters
+A: uppercase letters
+i: lowercase roman numerals
+I: uppercase roman numerals
+
+#### table
+
+**For more information**, see [Table](/elements/tables)
+
+#### form
+
+**For more information**, see [form](/elements/form)
+
+#### h1-h6
+
+**For more information**, see [h1-h6](/elements/text#h1-h6)
+
+#### p
+
+**For more information**, see [p](/elements/text#p)
+
+### Other
+
+#### address
+
+**For more information**, see [address](/elements/text#address)
+
+#### blockquote
+
+**For more information**, see [blockquote](/elements/text#blockquote)
+
+#### hr
+
+A thematic break between paragraph-level elements.
+
+- Do not use only to display an horizontal line. It has sementic meanining
+
+#### video
+
+**For more information**, see [video](/elements/video)
+
+#### pre
+
+Represents preformatted text which is to be presented exactly as written in the HTML file.
+
+- Whitespace inside this element is displayed as written.
+- **Accessibility**: provide an alternate description with a `role` and `aria-label` or with `figure` and `figcaption`
+
+#### canvas
+
+To display graphics and animations (with WebGL for example).
+
+- Provide alternate content inside the block for older browser and in JS disabled browsers
+- Canvas content is not exposed to accessibility tools as semantic HTML
+
+**Additional Attributes**
+
+| Attribute        | Description |
+| ---------------- | ----------- |
+| width (integer)  | The width   |
+| height (integer) | The height  |
+
+#### fieldset
+
+**For more information**, see [form](/elements/form)
+
+#### figure
+
+self-contained content, potentially with an optional caption, which is specified using the figcaption element.
+
+- Frequently used with `img`
+- Can be used with other elements like `blockquote`, `p`
+
+#### noscript
+
+Defines a section of HTML to be inserted if a script type on the page is unsupported or if scripting is currently turned off in the browser.
+
+## Inline Elements
+
+Inline elements only take up as much width as necessary and do not create a new block formatting context.
+
+**Vertical spacing won't be applied to inline elements**, meaning that if you add vertical padding to the element, it won't create a gap between the elements above and below it.
+
+<TypeInline />
+<ColumnsList groups={inlineList} />
+
+### Most common
+
+#### span
+
+Generic inline container. It does not sementically represent anything.
+
+- Used to group elements for styling purposes
+- It should be used only when no other semantic element is appropriate
+
+#### a
+
+**For more information**, see [a](/elements/a)
+
+#### img
+
+**For more information**, see [img](/elements/img)
+
+#### br
+
+Produces a line break in text.
+
+- Single purpose: create a line break in a block of text.
+- Bad practice: set a margin to give more space. Use the `line-height`
+- **DO NOT** use to create margin.
+
+#### script
+
+**For more information**, see [img](/elements/script)
+
+### Form Elements
+
+**For more information**, see [form](/elements/form)
+
+### Text Elements
+
+**For more information**, see [text](/elements/text)
+
+### Others
+
+#### map
+
+Used with area elements to define an image map.
+
+**Additional Attributes**
+
+| Attribute | Description                                                                                                                                                |
+| --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| name      | name: can be referenced. Must be present and must have a non-empty value. If the id attribute is also specified, both attributes must have the same value. |
+
+#### object
+
+An external resource (image, nested browsing context, resource).
+
+**Additional Attributes**
+
+| Attribute | Description                                 |
+| --------- | ------------------------------------------- |
+| data      | The URL of the resource                     |
+| form      | If any, id of the form in the same document |
+| height    | The height                                  |
+| width     | The width                                   |
+| name      | Valid browsing context                      |
+| type      | the type of the resource data               |
+| usemap    | A number name reference to a map element.   |
