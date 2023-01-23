@@ -1,1 +1,215 @@
 # Anchor
+
+Used to create a hyperlink to another webpage or to a specific location on the same webpage.
+
+- You can also use the target attribute to specify how the link should be opened.
+
+_Note: be descriptive with the text inside the <a></a> tag. Don't use: click here, and stay short._
+
+## Absolute Link
+
+An absolute link is a link that specifies the complete URL of the destination webpage.
+
+- used to link to any webpage on the internet
+
+```html
+<!-- Absolute Link -->
+<a href="https://google.com">Google</a>
+```
+
+## Relative Link
+
+A relative link is a link that is relative to the current website.
+
+```html
+<!-- Relative Link -->
+<a href="/home">Internal Link</a>
+```
+
+## Section on the current page
+
+To create a link to a specific location on the same webpage using the anchor tag in HTML, you need to use the id attribute on the element you want to link to, and then use the href attribute in the anchor tag to specify the location of the element.
+
+```html
+<!-- This is the element you want to link to -->
+<h2 id="top">Top of the page</h2>
+
+<!-- This is the anchor tag that creates the link -->
+<a href="#top">Click here to go to the top of the page</a>
+```
+
+You can go back to the top with:
+
+```html
+<a href="#">Back to top</a>
+```
+
+## Additional attributes
+
+### target
+
+The target attribute on an anchor tag in HTML is used to specify where the linked resource should be opened.
+
+| Value            | Description                                                                                                                 |
+| ---------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| \_blank          | Opens the linked document in a new window or tab                                                                            |
+| \_self (default) | Opens the linked document in the same frame as it was clicked                                                               |
+| \_parent         | (**Not useful in HTML5**) Opens the linked document in the parent frame _(with the depreciated `frame` element)_            |
+| \_top            | (**Not useful in HTML5**) Opens the linked document in the full body of the window _(with the depreciated `frame` element)_ |
+
+```html
+<a href="https://www.example.com" target="_blank">Open in new tab</a>
+```
+
+### download
+
+Specify that the linked resource should be downloaded rather than navigated to.
+
+- only works for same-origin URLs
+-
+
+```html
+<!-- This will download the file "example.pdf" when the link is clicked, and save it with the name "example_document.pdf" on the user's device. -->
+<a href="example.pdf" download="example_document.pdf">Download PDF</a>
+```
+
+### hreflang
+
+The hreflang attribute on an anchor tag in HTML is used to specify the language of the linked resource.
+
+### ping
+
+When the link is followed, the browser will send POST requests with the body PING to the URLs. Typically for tracking.
+
+```html
+<a
+  href="https://www.example.com"
+  ping="https://www.mywebsite.com/ping?affiliate_id=123"
+>
+  Shop now on example-affiliate-site
+</a>
+```
+
+### referrerpolicy
+
+Before understanding the referrerpolicy attribute, you need to understand the referrer HTTP header.
+
+#### The referrer HTTP header
+
+The referrer contains the URL of the webpage that the user was previously on, also known as the "referrer" page.
+
+For example, if a user is on a webpage at `https://www.example.com` and clicks on a link to `https://www.example2.com`, the browser will send a request to `https://www.example2.com` with the Referer header set to `https://www.example.com`.
+
+- The server can use this information to track the user's navigation and to understand how the user arrived at the current page.
+
+#### The referrerpolicy attribute
+
+The referrerpolicy define how to set the referrer HTTP header.
+
+| Value                                     | Description                                                                                                                                                                                              |
+| ----------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| no-referrer                               | No referrer information is sent along with requests.                                                                                                                                                     |
+| no-referrer-when-downgrade                | No referrer information is sent along with requests unless the request is the same origin. Sent when staying on the same website.                                                                        |
+| origin                                    | Only the origin of the page is sent as referrer information.                                                                                                                                             |
+| origin-when-cross-origin                  | Only the origin of the page is sent as referrer information unless the request is the same origin.                                                                                                       |
+| same-origin                               | The full URL is sent as referrer information unless the request is the same origin.                                                                                                                      |
+| strict-origin                             | Only send the origin of the document as the referrer when the protocol security level stays the same (HTTPS→HTTPS), but don't send it to a less secure destination (HTTPS→HTTP).                         |
+| strict-origin-when-cross-origin (default) | Send a full URL when performing a same-origin request, only send the origin when the protocol security level stays the same (HTTPS→HTTPS), and send no header to a less secure destination (HTTPS→HTTP). |
+| unsafe-url                                | Always send the full URL as the referrer.                                                                                                                                                                |
+
+### rel
+
+Specify the relationship between the current page and the linked resource.
+
+```html
+<!-- Indicate that the linked resource is sponsored by the current page. -->
+<a href="https://www.example-affiliate-site.com" rel="sponsored">
+  Shop now on example-affiliate-site
+</a>
+```
+
+| Value      | Description                                                                                                                                            |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| sponsored  | Indicate that the linked resource is sponsored by the current page.                                                                                    |
+| noopener   | Prevent the linked resource from being able to access the current window.                                                                              |
+| noreferrer | Prevent the browser from sending the referrer information to the linked URL                                                                            |
+| nofollow   | Indicate that the current page should not be crawled by search engines. (search engines will not "follow" the link, and will not pass any link equity) |
+| prev       | Indicate that the linked resource is the previous page in a series.                                                                                    |
+| next       | Indicate that the linked resource is the next page in a series.                                                                                        |
+| tag        | Indicate that the linked resource is a tag.                                                                                                            |
+
+**Difference between `rel="noreferrer"` and `referrerpolicy="no-referrer"`:**
+
+- `referrerpolicy="no-referrer"`: tells the browser to not send any referrer information **in the Referer header**.
+- `rel="noreferrer"`: tells the browser to not send any referrer information **to the linked resource `window.document.referer`**.
+
+### type
+
+Indicate the type of the linked resource.
+
+- it can help the browser to handle the resource in the appropriate way, such as opening a video in a video player or an audio in a audio player.
+
+For example, imagine a website that wants to allow users to download a PDF document. The website could use the type attribute on the link to indicate that the linked resource is a PDF document.
+
+```html
+<a href="example.pdf" type="application/pdf" download="example_document.pdf">
+  Download PDF document
+</a>
+```
+
+## Link to email address
+
+To create a link to an email address, you can use the mailto attribute in the anchor tag. For example:
+
+```html
+<a href="mailto:someone@example.com">Send an email</a>
+```
+
+This will create a link that, when clicked, will open the user's default email client and create a new email message with the specified email address in the "To" field.
+
+You can also include additional attributes in the anchor tag to customize the behavior of the link. For example, you can use the subject attribute to specify the subject of the email message:
+
+```html
+<a href="mailto:someone@example.com?subject=Hello">Send an email</a>
+```
+
+You can also use the body attribute to specify the content of the email message:
+
+```html
+<a
+  href="mailto:someone@example.com?subject=Hello&body=Hello,%20how%20are%20you%3F"
+  >Send an email</a
+>
+```
+
+Keep in mind that the subject and body attributes must be properly encoded. In the example above, the subject is "Hello" and the body is "Hello, how are you?". The spaces and special characters are encoded using percent-encoding, which is a way of representing characters that are not part of the ASCII character set in a URL.
+
+_Note: it is not recommended to use this pattern if you don't want your email address to be scrapped from robot and shared on the web. It is better to use a contact form._
+
+## Link to a phone number
+
+To create a link to a phone number in HTML using the a element (also known as an anchor element), you can use the tel: URI scheme. The tel: scheme is used to specify that the link should be opened by a telephone application on the user's device.
+
+Here is an example of how you might create a link to a phone number in HTML:
+
+```html
+<a href="tel:+1234567890">Call us at +1 (234) 567-890</a>
+```
+
+To create a link to a phone number in HTML using the a element (also known as an anchor element), you can use the tel: URI scheme. The tel: scheme is used to specify that the link should be opened by a telephone application on the user's device.
+
+Here is an example of how you might create a link to a phone number in HTML:
+
+```html
+<a href="tel:+1234567890">Call us at +1 (234) 567-890</a>
+```
+
+When the user clicks on this link, their telephone application will open and the number will be pre-filled. The user can then click a button to place the call.
+
+You can also use the a element to create a link to send an SMS message or create a new email message. To do this, you can use the sms: and mailto: URI schemes, respectively.
+
+Here is an example of how you might create a link to send an SMS message:
+
+```html
+<a href="sms:+1234567890">Send an SMS to +1 (234) 567-890</a>
+```
