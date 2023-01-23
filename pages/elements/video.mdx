@@ -1,1 +1,96 @@
 # Video
+
+Used to embed video content on a web page. The video can be played directly in the browser, without the need for a separate plugin or application.
+
+The basic syntax is as follows:
+
+```html
+<video src="video_file.mp4" controls>
+  Your browser does not support the video tag.
+</video>
+```
+
+You can specify multiple sources for the video by using the <source> element, allowing the browser to choose the best format for the user's device.
+
+```html
+<video>
+  <source src="video_file.mp4" type="video/mp4" />
+  <source src="video_file.webm" type="video/webm" />
+  <source src="video_file.ogv" type="video/ogg" />
+  Your browser does not support the video tag.
+</video>
+```
+
+Here is an example of a complete HTML5 video player with multiple sources, captions and poster image:
+
+```html
+<video controls width="640" height="360" poster="poster_image.jpg">
+  <source src="video_file.mp4" type="video/mp4" />
+  <source src="video_file.webm" type="video/webm" />
+  <source src="video_file.ogv" type="video/ogg" />
+  <track src="captions.vtt" kind="captions" srclang="en" label="English" />
+  Your browser does not support the video tag.
+</video>
+```
+
+## Common Attributes
+
+### src, controls, width, height
+
+The src attribute specifies the URL of the video file to be embedded. The controls attribute displays the default video controls, such as play/pause and volume, within the browser.
+
+You can also specify the width and height of the video using the width and height attributes, respectively.
+
+<video src="video_file.mp4" controls width="640" height="360">
+  Your browser does not support the video tag.
+</video>
+
+### track
+
+The track element is used to specify timed text tracks for media elements. The text tracks are used for subtitles, captions, and other text-based information that is displayed over the video or audio.
+
+```html
+<video controls>
+  <source src="video_file.mp4" type="video/mp4" />
+  <track src="captions.vtt" kind="captions" srclang="en" label="English" />
+  Your browser does not support the video tag.
+</video>
+```
+
+### poster
+
+You can also set the default poster image of the video by using the poster attribute.
+
+```html
+<video
+  src="video_file.mp4"
+  controls
+  width="640"
+  height="360"
+  poster="poster_image.jpg"
+>
+  Your browser does not support the video tag.
+</video>
+```
+
+## Events
+
+### onplay, onpause, onended
+
+The onplay, onpause, and onended events are triggered when the video starts playing, pauses, and ends, respectively.
+
+```html
+<video
+  src="video_file.mp4"
+  controls
+  width="640"
+  height="360"
+  onplay="myFunction()"
+>
+  Your browser does not support the video tag.
+</video>
+```
+
+## Libraries
+
+Open-source libraries like `video.js`, `plyr.js`, and many more that can be used to customize the default video player.

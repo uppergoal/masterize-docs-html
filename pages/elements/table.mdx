@@ -1,1 +1,58 @@
-# Table
+# Tables
+
+A table in HTML is used to present data in a tabular format. It consists of rows and columns, with the data being organized into cells. The <table> element is used to create a table, and the <tr> element is used to create rows, while the <td> element is used to create columns. You can also use the <th> element to create a header row or column, which is typically displayed in a bolder font and centered within the cell. Here's an example:
+
+```html
+<table>
+  <caption>
+    My table title
+  </caption>
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Age</th>
+      <th scope="col">Location</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td>Alice</td>
+      <td>25</td>
+      <td>New York</td>
+    </tr>
+    <tr>
+      <td>Bob</td>
+      <td>30</td>
+      <td>London</td>
+    </tr>
+    <tr>
+      <td>Charlie</td>
+      <td>35</td>
+      <td>Paris</td>
+    </tr>
+  </tbody>
+
+  <tfooter>
+    <tr>
+      <td colspan="3">The footer</td>
+    </tr>
+  </tfooter>
+</table>
+```
+
+The scope attribute is used to specify the cells that a <th> element applies to in an HTML table. The <th> element is used to create a cell that is a header, and the scope attribute is used to specify which cells in the table the header cell applies to.
+
+## Caption
+
+You can give meaning to a table by defining a caption:
+
+## Span (colspan & rowspan)
+
+The rowspan/colspan attribute is used to specify the number of rows/cols a cell should span or merge. It is used within the <td> or <th> element, and its value is the number of rows/cols that the cell should span.
+
+## thead, tbody, tfooter
+
+The <thead>, <tbody>, <tfooter> element is used to group the content in an HTML table.
+
+The purpose of those elements is to provide a way to group and style the header content in a table.

@@ -2,10 +2,6 @@
   "index": "Introduction",
   "elements": "Elements",
   "concepts": "Concepts",
-  "about": {
-    "title": "About",
-    "type": "page"
-  },
   "contact": {
     "title": "Contact ↗",
     "type": "page",
