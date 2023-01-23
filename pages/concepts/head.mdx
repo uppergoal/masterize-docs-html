@@ -1,3 +1,85 @@
-# head
+# Head
 
 Even if the head is a HTML element, I prefer to put it into the **concept** grouping since it is not a structural element.
+
+Used to contain metadata about the document, such as the title, keywords, and character encoding. It should be placed as the first child of the `<html>` element and should always be present in an HTML document.
+
+## Title
+
+The `<title>` element is used to specify the title of the document, which is displayed in the browser's title bar or tab. For example:
+
+```html
+<head>
+  <title>My website</title>
+</head>
+```
+
+## Meta
+
+The `<meta>` element is used to specify metadata about the document, such as the character encoding, keywords, description, author, and viewport settings. For example:
+
+```html
+<head>
+  <meta charset="UTF-8" />
+  <meta name="keywords" content="HTML, CSS, JavaScript" />
+  <meta
+    name="description"
+    content="Learn how to create a website using HTML, CSS, and JavaScript."
+  />
+</head>
+```
+
+### Open Graph
+
+Open Graph is a set of meta tags that are used to provide information about a web page to social media platforms such as Facebook and LinkedIn.
+
+```html
+<head>
+  <meta property="og:title" content="My website" />
+  <meta
+    property="og:description"
+    content="Learn how to create a website using HTML, CSS, and JavaScript."
+  />
+  <meta property="og:image" content="https://example.com/image.jpg" />
+</head>
+```
+
+#### Most Common Properties
+
+| Property         | Description                                |
+| ---------------- | ------------------------------------------ |
+| `og:title`       | The title of the page.                     |
+| `og:type`        | The type of the page.                      |
+| `og:url`         | The URL of the page.                       |
+| `og:image`       | The URL of an image to represent the page. |
+| `og:description` | A brief description of the page.           |
+| `og:site_name`   | The name of the site.                      |
+| `og:locale`      | The locale of the page.                    |
+
+### Twitter
+
+Twitter uses a set of meta tags to provide information about a web page to Twitter.
+
+```html
+<head>
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="My website" />
+  <meta
+    name="twitter:description"
+    content="Learn how to create a website using HTML, CSS, and JavaScript."
+  />
+  <meta name="twitter:image" content="https://example.com/image.jpg" />
+</head>
+```
+
+#### Most Common Properties
+
+| Property              | Description                                |
+| --------------------- | ------------------------------------------ |
+| `twitter:card`        | The type of card to display.               |
+| `twitter:site`        | The Twitter username of the site.          |
+| `twitter:creator`     | The Twitter username of the page creator.  |
+| `twitter:title`       | The title of the page.                     |
+| `twitter:description` | A brief description of the page.           |
+| `twitter:image`       | The URL of an image to represent the page. |
+| `twitter:image:alt`   | A description of the image.                |
