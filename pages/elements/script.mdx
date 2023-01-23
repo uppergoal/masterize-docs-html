@@ -1,1 +1,107 @@
-# script
+# Script
+
+Used to embed executable code or data.
+
+## Attributes
+
+### async
+
+The script will be fetched in parallel to parsing and evaluated as soon as it is available.
+
+- Eliminate the parser-blocking JavaScript
+
+### crossorigin
+
+Used to specify whether or not the script should be loaded with a "Cross-Origin Resource Sharing" (CORS) request.
+
+If a script is loaded with a "crossorigin" attribute, the browser will include an "Origin" header with the request, and the server will have the opportunity to include an "Access-Control-Allow-Origin" header in the response.
+
+### defer
+
+Meant to be executed after the document has been parsed, but before firing DOMContentLoaded.
+
+- Scripts with the defer attribute will execute in the order in which they appear in the document.
+
+### fetchpriority
+
+The fetch priority of the script.
+
+Can be:
+
+- high
+- low
+- auto
+
+### integrity
+
+Used to provide a way for the browser to verify that the script being loaded has not been tampered with. The attribute's value should be a cryptographic hash of the script file, calculated using a specific algorithm such as SHA-256.
+
+When the browser requests the script, it will also check for the integrity attribute and compare the hash value of the script it receives with the one provided in the integrity attribute. If the values match, the browser will execute the script as normal. If the values do not match, the browser will reject the script, and the browser will not execute it, and a error message will be shown.
+
+The browser will calculate the hash of the script file it receives and compare it to the value provided in the integrity attribute.
+
+```html
+<script
+  src="https://example.com/example-script.js"
+  integrity="sha256-BpfBw7ivV8q2jLiT13fxDYAe2tJllusRSZ273h2nFSE="
+  crossorigin="anonymous"
+></script>
+```
+
+### nomodule
+
+Used to indicate that the script should not be executed if the browser supports ES modules.
+
+### nonce
+
+provide a way to prevent cross-site scripting (XSS) attacks by ensuring that the script being executed is the one that was intended by the website's developer. A nonce is a unique value that is randomly generated and added to the script element, and it is also checked by the browser when executing a script.
+
+```html
+<script
+  src="https://example.com/example-script.js"
+  nonce="randomly-generated-nonce"
+></script>
+```
+
+### referrerpolicy
+
+Before understanding the referrerpolicy attribute, you need to understand the referrer HTTP header.
+
+#### The referrer HTTP header
+
+The referrer contains the URL of the webpage that the user was previously on, also known as the "referrer" page.
+
+For example, if a user is on a webpage at `https://www.example.com` and clicks on a link to `https://www.example2.com`, the browser will send a request to `https://www.example2.com` with the Referer header set to `https://www.example.com`.
+
+- The server can use this information to track the user's navigation and to understand how the user arrived at the current page.
+
+#### The referrerpolicy attribute
+
+The referrerpolicy define how to set the referrer HTTP header.
+
+| Value                                     | Description                                                                                                                                                                                              |
+| ----------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| no-referrer                               | No referrer information is sent along with requests.                                                                                                                                                     |
+| no-referrer-when-downgrade                | No referrer information is sent along with requests unless the request is the same origin. Sent when staying on the same website.                                                                        |
+| origin                                    | Only the origin of the page is sent as referrer information.                                                                                                                                             |
+| origin-when-cross-origin                  | Only the origin of the page is sent as referrer information unless the request is the same origin.                                                                                                       |
+| same-origin                               | The full URL is sent as referrer information unless the request is the same origin.                                                                                                                      |
+| strict-origin                             | Only send the origin of the document as the referrer when the protocol security level stays the same (HTTPS→HTTPS), but don't send it to a less secure destination (HTTPS→HTTP).                         |
+| strict-origin-when-cross-origin (default) | Send a full URL when performing a same-origin request, only send the origin when the protocol security level stays the same (HTTPS→HTTPS), and send no header to a less secure destination (HTTPS→HTTP). |
+| unsafe-url                                | Always send the full URL as the referrer.                                                                                                                                                                |
+
+### src
+
+The URL of the script to be loaded.
+
+### type
+
+The type of script.
+
+### importmap
+
+Used to specify a URL to an import map.
+
+### blocking
+
+Used to specify whether or not the script should be loaded in a blocking manner.

@@ -1,1 +1,85 @@
-# Anchor
+# Images
+
+The `<img>` element is used to add an image to an HTML document.
+
+- Doesn't have a closing tag
+- The src can be relative or absolute
+
+**Required attributes:**
+
+- `src`: The URL of the image.
+- `alt`: An alternative text for the image in case the image cannot be displayed for some reason or if someone cannot see the image (Screen reader).
+
+```html
+<img src="image.jpg" alt="A description of the image" />
+```
+
+## Attributes
+
+### Width and height
+
+Specify the width and height of the image, in pixels.
+
+- don't actually change the size of the image file
+- It is recommended to explicitly set both to minimize the cumulative layout shit. _(A layout shift occurs when a visible element on a webpage changes its position because of another element)_
+
+```html
+<img
+  src="image.jpg"
+  alt="A description of the image"
+  width="200"
+  height="100"
+/>
+```
+
+### Title
+
+Provide additional information about the image. The text in the title attribute is displayed as a tooltip when the mouse is hovered over the image.
+
+- an additional source of information (not a replacement for the alt attribute)
+
+```html
+<img
+  src="image.jpg"
+  alt="A description of the image"
+  title="A more detailed description of the image"
+/>
+```
+
+### Loading
+
+Used to specify how the browser should handle the loading of an image. The attribute can have the following values:
+
+| Value      | Description                                                                                |
+| ---------- | ------------------------------------------------------------------------------------------ |
+| s (defaul) | The browser should use its default behavior for loading the image.                         |
+| lazy       | only load the image when it is near the viewport. (improving the performance)              |
+| eager      | load the image immediately, regardless of whether it is visible or not. (important images) |
+
+```html
+<img src="image.jpg" alt="A description of the image" loading="lazy" />
+```
+
+## Figure
+
+Represent self-contained content, often with a caption, that can be referenced as a single unit from the main content of the webpage. This is useful for content that is intended to be reused, such as illustrations, diagrams, photos, code snippets, etc.
+
+- typically used to contain images, charts, or other types of media.
+- can be accompanied by a figcaption element, which is used to provide a caption or description for the content within the figure.
+
+```html
+<figure>
+  <img src="image.jpg" alt="A beautiful landscape" />
+  <figcaption>A beautiful landscape in the mountains</figcaption>
+</figure>
+```
+
+## Improve performance
+
+1. Reduce the file size of images.
+1. Use lazy loading: Load images only when they are visible to the user. This can improve page load time and save bandwidth.
+1. Use appropriate image file types: JPEGs are best for photographs, PNGs are best for graphics with transparent backgrounds, and GIFs are best for simple animations.
+1. Specify image dimensions: By specifying the width and height of an image, the browser can reserve the appropriate space for it before it has loaded, which improves the overall layout of the page.
+1. Minimize the number of images: Reduce the number of images used on the website. This can be done by using CSS effects, such as gradients, instead of images.
+1. Use a Content Delivery Network (CDN): A CDN can help distribute the images to users from a location close to them, which can reduce load times.
+1. Optimize images for mobile: Make sure images are optimized for mobile devices by compressing them and using appropriate file types.

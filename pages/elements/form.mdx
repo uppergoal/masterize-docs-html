@@ -1,1 +1,165 @@
 # Form
+
+interactive form that a user can fill out and submit. The form element acts as a container for different form controls, such as text fields, checkboxes, radio buttons, and so on.
+
+When the user fills out the form and clicks the "Submit" button, the form's data is sent to a server-side script or to a specified URL, where it can be processed mapping each value with it's field name.
+
+```html
+<form action="/endoint/to/server" method="POST">
+  <!-- Block element -->
+  <p>
+    <label for="name">Name:</label>
+    <input
+      type="text"
+      id="name"
+      name="name"
+      placeholder="John Doe"
+      required
+      autofocus
+    />
+  </p>
+
+  <!-- Block element -->
+  <p>
+    <label for="gender">Gender:</label>
+    <input type="radio" id="gender" name="gender" value="male" /> Male
+    <input type="radio" id="gender" name="gender" value="female" /> Female<br />
+  </p>
+
+  <!-- Block element -->
+  <p>
+    <button type="submit">Submit</button>
+
+    <button type="submit" formaction="another-endopoint">Antoher action</button>
+
+    <button type="reset">Reset</button>
+  </p>
+</form>
+```
+
+## Attributes
+
+| Attribute                                                                                                             | Description                                                                         |
+| --------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| action                                                                                                                | Specifies where to send the form-data when a form is submitted.                     |
+| method (`GET`, `POST`)                                                                                                | Specifies how to send the form-data (which HTTP method to use).                     |
+| autocomplete                                                                                                          | Specifies whether or not the form should have autocomplete enabled.                 |
+| name                                                                                                                  | Specifies the name of the form.                                                     |
+| rel (Check [doc](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#attr-rel) for me info)                | Specifies the relationship between the current document and the linked document.    |
+| enctype                                                                                                               | Specifies how the form-data should be encoded when submitting it to the server.     |
+| accept-charset (Check [doc](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#attr-enctype) for me info) | Specifies the character encodings that are to be used for the form submission.      |
+| novalidate                                                                                                            | Specifies that the form should not be validated when submitted.                     |
+| target                                                                                                                | Specifies where to display the response that is received after submitting the form. |
+
+# Elements
+
+- The labels are important for accessibility purposes.
+- The label is associated with an element via the `for` attribute matching with the `id`
+
+## Input
+
+create various types of input fields for forms, such as text fields, checkboxes, radio buttons... The type attribute specifies the type of input field to create.
+
+```html
+<p>
+  <label for="name">Name:</label>
+  <input
+    type="text"
+    id="name"
+    name="name"
+    placeholder="John Doe"
+    required
+    autofocus
+  />
+</p>
+```
+
+#### Types
+
+Refer to [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#Form_%3Cinput%3E_types) for a list of type.
+
+### Other Attributes
+
+Refer to [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#Attributes) for all the possible attributes.
+
+## Textarea
+
+Create a multi-line text input field, where users can enter more than one line of text.
+
+Refer to [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea) for all the possible attributes.
+
+```html
+<label for="message">Enter your message:</label>
+<textarea id="message" name="message" rows="10" cols="30" required>
+Enter your message here...</textarea
+>
+```
+
+## Select
+
+create a drop-down list of options that a user can choose from.
+
+- Typically used in conjunction with the `<option>` element, which is used to define the individual options in the list.
+
+```html
+<label for="color">Choose a color:</label>
+<select id="color" name="color">
+  <option value="red">Red</option>
+  <option value="green">Green</option>
+  <option value="blue">Blue</option>
+</select>
+```
+
+Refer to [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select) for all the possible attributes.
+
+### Optgroup
+
+create a group of options within a drop-down list.
+
+```html
+<label for="fruit">Choose a fruit:</label>
+<select id="fruit" name="fruit">
+  <optgroup label="Citrus fruits">
+    <option value="lemon">Lemon</option>
+    <option value="orange">Orange</option>
+    <option value="grapefruit">Grapefruit</option>
+  </optgroup>
+  <optgroup label="Berries">
+    <option value="strawberry">Strawberry</option>
+    <option value="raspberry">Raspberry</option>
+    <option value="blueberry">Blueberry</option>
+  </optgroup>
+</select>
+```
+
+## Datalist
+
+Create a list of predefined options that can be used in conjunction with an `<input>` element.
+
+```html
+<label for="fruits">Enter a fruit:</label>
+<input type="text" id="fruits" list="fruit-options" />
+<datalist id="fruit-options">
+  <option value="Apple"></option>
+  <option value="Banana"></option>
+  <option value="Orange"></option>
+  <option value="Mango"></option>
+  <option value="Strawberry"></option>
+</datalist>
+```
+
+# Sections
+
+The `<fieldset>` and `<legend>` elements in HTML are used to group related form controls together.
+
+```html
+<fieldset>
+  <legend>Personal Information</legend>
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" />
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" />
+  <label for="phone">Phone:</label>
+  <input type="tel" id="phone" name="phone" />
+</fieldset>
+```
