@@ -67,6 +67,10 @@ export const inlineList = [
         id: "time",
         title: "time",
       },
+      {
+        id: "mark",
+        title: "mark",
+      },
     ],
   },
   {
